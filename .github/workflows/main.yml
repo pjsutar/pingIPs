@@ -50,10 +50,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
        
-      - name: Run the Python code in main.py
-        run: |
-          echo "Running Python code"
-          python demo.py
+      #- name: Run the Python code in demo.py
+      #  run: |
+      #    echo "Running Python code"
+      #    python demo.py
       
       # Run all tests with verbose flag
       - name: Run all tests
