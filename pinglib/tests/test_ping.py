@@ -10,7 +10,7 @@ from multiprocessing import Queue
 def test_ping_output() -> None:
     queue = multiprocessing.Queue()
     testList = ping(queue, ["8.8.8.8", "192.168.1.0", "192.168.1.1", "192.168.1.2", "1.1.1.1"], 3, 
-                        result := [_ for _ in range(5)], {1})
+                        result = [_ for _ in range(5)], {1})
     assert testList == [True, None, False, False, True]
 
 
@@ -19,6 +19,6 @@ def test_ping_output() -> None:
 def test_ping_output_type() -> None:
     queue = multiprocessing.Queue()
     testList = ping(queue, ["8.8.8.8", "192.168.1.0", "192.168.1.1", "192.168.1.2", "1.1.1.1"], 1, 
-                        result := [_ for _ in range(5)], None)
+                        result = [_ for _ in range(5)], None)
     for i in testList:
         assert type(i) == bool
