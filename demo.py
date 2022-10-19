@@ -74,4 +74,13 @@ def main():
     return oneRangeIPs
 
 if __name__ == "__main__":
+
+    start_time = time.time()
+
     main()
+
+    end_time = time.time()
+
+    requiredTime = end_time - start_time
+
+    print(f"Time required for pinging all IPs: {requiredTime} seconds")

@@ -132,6 +132,6 @@ if __name__ == "__main__":
 
     requiredTime = end_time - start_time
 
-    print("Time required for pinging process is {}\n".format(requiredTime))
+    print(f"Time required for pinging process: {requiredTime} seconds\n")
 
 

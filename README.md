@@ -51,9 +51,27 @@ $ python -m pip install -r requirements.txt
 $ python main.py
 ```
 
+## :ship: Execute code inside a Docker container
+The code can also be invoked by running commands inside 
+a Docker container. To run demo.py inside a Docker container, 
+use steps below.
+- Build docker Image from dockerfile provided
+```bash
+$ Docker build -t fpingip:0.0.1 .
+```
+- Run Docker Image to create a running container
+```bash
+$ Docker run -i -t fpingip:0.0.1
+```
+By default, this will invoke the command to run demo.py
+
 ## :memo: Usage
 
 ```python
+#pingIPs can be invoked simply by running main.py
+
+#Flow of function is as follows
+
 # Input subnet ID with CIDR notation
 subnet1 = input()
 subnet2 = input()
@@ -77,6 +95,10 @@ oneRangeIPs = pingableOnOneRange(ip_range1, ip_range2, pingResult1, pingResult2)
 print(oneRangeIPs)
 ```
 
+## :bulb: Special Notes
+To run ping command on Linux and Darwin/Mac systems 'fping' command is used 
+instead of 'ping' from iputils. 'fping' allows passing timeout arguments conveniently.
+
 ## :rotating_light: Tests
 To run the tests, run pytest
 
@@ -88,3 +110,4 @@ $ pytest -v
 
 [ipaddress library](https://docs.python.org/3/library/ipaddress.html)  
 [multiprocessing library](https://docs.python.org/3/library/multiprocessing.html)
+[fping](https://fping.org/fping.1.html)
