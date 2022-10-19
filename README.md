@@ -84,7 +84,7 @@ To run the tests, run pytest
 $ pytest -v
 ```
 
-## :scroll: License
+## :scroll: References
 
 [ipaddress library](https://docs.python.org/3/library/ipaddress.html)  
 [multiprocessing library](https://docs.python.org/3/library/multiprocessing.html)
