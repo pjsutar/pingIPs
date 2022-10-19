@@ -32,7 +32,7 @@ Refer to [Usage](#memo-usage) to see how to use this
     ├── main.py                             # main
     ├── demo.py                             # demo code
     ├── Dockerfile                          # Dockerfile
-    └── Dockerfile                          # Docker Ignore
+    └── .dockerignore                       # Docker Ignore
 
 ## :zap: Install
 Following steps are recommended for installation
