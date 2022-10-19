@@ -14,7 +14,7 @@ from multiprocessing import Queue
 @pytest.fixture
 def fpingInstall():
     if platform.system().lower() == "linux":
-        subprocess.run("apt-get install fping")
+        subprocess.run("sudo apt install -y fping")
     elif platform.system().lower() == "darwin":
         subprocess.run("sudo port install fping")
     else:
