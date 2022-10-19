@@ -1,3 +1,10 @@
+""" generate range of IP Addresses in given subnet
+This script allows users to pass in a network addresses and generate list of IP Addresses in it
+using ipaddress module
+
+Tests for this script are written in pinglib/tests/test_generateIPs.py file
+"""
+
 import ipaddress
 
 def generateIPs(subnet):

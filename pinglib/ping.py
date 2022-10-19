@@ -1,3 +1,20 @@
+""" Ping IP addresses and return if they are accessible or not
+This script contains following functions:
+
+1) ping()
+Allows user to pass in list of IP addresses, retry attempts and list of IP addresses to exclude rom pinging
+and returns a list boolean values for IP addresses based on their accessibility (i.e. True if accessible and False if inaccessible )
+
+2) generateExcludeList()
+Prompts user to input space separated host digits to exclude from pinging process and returns a set of hosts that need to be
+excluded from pinging
+
+3) toExclude
+Updates result list for the hosts that are present in the exclude list. This function is called in the ping() function.
+
+Tests for this script are written in pinglib/tests/test_ping.py file
+"""
+
 import ipaddress
 import multiprocessing
 import subprocess
@@ -10,9 +27,11 @@ def ping(queue: Queue, ip_range: list, retries: int, result: list, excludeSet: s
     """
     Function to ping IP Addresses in a range
 
+    :param queue <ultiprocessing.Queue>: multiprocessing.Queue object to store result to be retrieved in multiprocessing
     :param ip_range <list>: list of IP Addresses
     :param retries <int>: number of ping retry attempts
-    :param result <default empty list>: empty list to store ping result
+    :param result <list>: list of zeros to store ping result
+    :param excludeSet <set>: set of hosts to exclude from pinging
 
     :return result <list[bool]>: list of boolean ping results
     """
@@ -55,7 +74,7 @@ def ping(queue: Queue, ip_range: list, retries: int, result: list, excludeSet: s
 
     return result
 
-# Generate used defined exclude list
+# Generate user defined exclude list
 def generateExcludeList():
     """ Generates set of hosts to be excluded from pinging """
 

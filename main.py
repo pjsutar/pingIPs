@@ -1,3 +1,14 @@
+""" Execute the work flow
+This script contains the main function to execute following steps
+- Get information from user
+- Generate IP address ranges
+- Ping IP address ranges
+- Exclude IP addresses pinging if defined by user
+- Return IP addresses that are pingable on only one range
+
+Pinging task is executed concurrently on two IP ranges using multiprocessing
+"""
+
 import time
 import multiprocessing
 from pinglib.generateIPs import generateIPs
@@ -20,8 +31,9 @@ def main():
     ip_range1 = generateIPs(subnet1)
     ip_range2 = generateIPs(subnet2)
     
-    result_subnet1 = [0 for _ in range(256)]
-    result_subnet2 = [0 for _ in range(256)]
+    # Initializing arrays to store ping results
+    result_subnet1 = [0 for _ in range(len(ip_range1))]
+    result_subnet2 = [0 for _ in range(len(ip_range2))]
 
     # Initiate arrays to hold process parameters
     queue = multiprocessing.Queue() # queue holds ping function results
@@ -47,12 +59,16 @@ def main():
     for process in processes:
         process.join()
 
+    # Extract results from queue
     subnet1_result = results[0]
     subnet2_result = results[1]
 
+    # Gracefully close the queue
+    queue.close()
+
     print("\nPinging is done!\n")
 
-    # Compare ping results and return 
+    # Compare ping results and return IPs pingable on only one range
     print("Following IP addresses are pingable only on one range\n")
     oneRangeIPs = pingableOnOneRange(ip_range1, ip_range2, subnet1_result, subnet2_result)
     print(oneRangeIPs)
