@@ -1,6 +1,6 @@
 # :rocket: pingIPs
-Parallel testing of IP addresses in python
-Generates ranges of IP addresses in two subnet IDs provided by user and returns hosts that are accessible in one range and inaccessible in the other.
+Parallel testing of IP addresses in python  
+Generates ranges of IP addresses in two subnet IDs provided by user and returns hosts that are accessible in one range and inaccessible in the other  
 Refer to [Usage](#memo-usage) to see how to use this
 
 ## :tada: About
@@ -86,5 +86,5 @@ $ pytest -v
 
 ## :scroll: License
 
-[ipaddress library](https://docs.python.org/3/library/ipaddress.html)
+[ipaddress library](https://docs.python.org/3/library/ipaddress.html)  
 [multiprocessing library](https://docs.python.org/3/library/multiprocessing.html)
