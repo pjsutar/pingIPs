@@ -1,6 +1,6 @@
 FROM python:latest
 
-RUN apt-get install fping
+RUN sudo apt install -y fping
 
 WORKDIR /usr/app/src
 
