@@ -52,17 +52,9 @@ def pingResult(queue: Queue, ip_range: list, retries: int, result: list, exclude
         #else:
         ip = ip_range[idx]
 
-        # Option for the number of packets as a function of
-        param = '-n' if platform.system().lower()=='windows' else '-C'
-
-        # Building the command for Windows, Linux and Darwin. Ex: "ping -C 1 192.168.x.y"
-        if param == '-n':
-            command = ['ping', param, str(retries), '-w', '100', ip]
-        else:
-            command = ['fping', param, str(retries), '-t', '1000', ip]
 
         # Run ping command
-        pingCmdReturn = ping(command)
+        pingCmdReturn = ping(ip, retries)
         #print(pingCmd.stdout.decode())
 
 
@@ -78,7 +70,15 @@ def pingResult(queue: Queue, ip_range: list, retries: int, result: list, exclude
     return result
 
 # Ping IPs
-def ping(command):
+def ping(ip, retries):
+    # Option for the number of packets as a function of
+    param = '-n' if platform.system().lower()=='windows' else '-C'
+
+    # Building the command for Windows, Linux and Darwin. Ex: "ping -C 1 192.168.x.y"
+    if param == '-n':
+        command = ['ping', param, str(retries), '-w', '100', ip]
+    else:
+        command = ['ping', param, str(retries), ip]
     pingCmd = subprocess.run(command, capture_output=True)
     print(pingCmd.stdout.decode())
     return pingCmd.returncode
