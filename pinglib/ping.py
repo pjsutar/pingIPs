@@ -23,7 +23,7 @@ from multiprocessing import Queue
 import time
 import os
 
-def ping(queue: Queue, ip_range: list, retries: int, result: list, excludeSet: set = None) -> list:
+def pingResult(queue: Queue, ip_range: list, retries: int, result: list, excludeSet: set = None) -> list:
     """
     Function to ping IP Addresses in a range
 
@@ -62,12 +62,12 @@ def ping(queue: Queue, ip_range: list, retries: int, result: list, excludeSet: s
             command = ['fping', param, str(retries), '-t', '1000', ip]
 
         # Run ping command
-        pingCmd = subprocess.run(command, capture_output = True)
-        print(pingCmd.stdout.decode())
+        pingCmdReturn = ping(command)
+        #print(pingCmd.stdout.decode())
 
 
         # Update result based on subprocess output
-        if pingCmd.returncode == 0:
+        if pingCmdReturn == 0:
             result[idx] = True
         else:
             result[idx] = False
@@ -76,6 +76,12 @@ def ping(queue: Queue, ip_range: list, retries: int, result: list, excludeSet: s
     queue.put(result)
 
     return result
+
+# Ping IPs
+def ping(command):
+    pingCmd = subprocess.run(command, capture_output=True)
+    print(pingCmd.stdout.decode())
+    return pingCmd.returncode
 
 # Generate user defined exclude list
 def generateExcludeList():

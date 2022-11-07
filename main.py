@@ -12,7 +12,7 @@ Pinging task is executed concurrently on two IP ranges using multiprocessing
 import time
 import multiprocessing
 from pinglib.generateIPs import generateIPs
-from pinglib.ping import ping, generateExcludeList, toExclude
+from pinglib.ping import pingResult, ping, generateExcludeList, toExclude
 from pinglib.oneRangeIPs import pingableOnOneRange
 
 def main():
@@ -43,11 +43,11 @@ def main():
     # Ping all IP addresses
     # Using multiprocessing to execute concurrently
 
-    process1 = multiprocessing.Process(target = ping, args = (queue, ip_range1, retries, result_subnet1, excludeSet))
+    process1 = multiprocessing.Process(target = pingResult, args = (queue, ip_range1, retries, result_subnet1, excludeSet))
     processes.append(process1)
     process1.start()
 
-    process2 = multiprocessing.Process(target = ping, args = (queue, ip_range2, retries, result_subnet2, excludeSet))
+    process2 = multiprocessing.Process(target = pingResult, args = (queue, ip_range2, retries, result_subnet2, excludeSet))
     processes.append(process2)
     process2.start()
 
