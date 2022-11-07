@@ -4,10 +4,10 @@ import multiprocessing
 import subprocess
 import platform
 import pytest
-import pytest_mock
+#import pytest_mock
 from pinglib.ping import ping, pingResult, toExclude, generateExcludeList
 from multiprocessing import Queue
-from pytest_mock import mocker
+#from pytest_mock import mocker
 
 # Output test to check if function returns desired output
 # Testing ping() function with exclude hosts list and 3 ping attempts
