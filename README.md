@@ -37,16 +37,16 @@ Refer to [Usage](#memo-usage) to see how to use this
 ## :zap: Install
 Following steps are recommended for installation
 
-1. Clone pingIPs repository to your local machine
+- Clone pingIPs repository to your local machine
 ```bash
 $ git clone https://github.com/pjsutar/pingIPs.git
 ```
-2. Use a virtual environment
-3. Install requirements in virtual environment
+- Use a virtual environment
+- Install requirements in virtual environment
 ```bash
 $ python -m pip install -r requirements.txt
 ```
-4. Run main.py
+- Run main.py
 ```bash
 $ python main.py
 ```
@@ -109,5 +109,5 @@ $ pytest -v
 ## :scroll: References
 
 [ipaddress library](https://docs.python.org/3/library/ipaddress.html)  
-[multiprocessing library](https://docs.python.org/3/library/multiprocessing.html)
+[multiprocessing library](https://docs.python.org/3/library/multiprocessing.html)  
 [fping](https://fping.org/fping.1.html)
