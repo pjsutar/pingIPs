@@ -72,7 +72,7 @@ def pingResult(queue: Queue, ip_range: list, retries: int, result: list, exclude
 # Ping IPs
 def ping(ip, retries):
     # Option for the number of packets as a function of
-    param = '-n' if platform.system().lower()=='windows' else '-C'
+    param = '-n' if platform.system().lower()=='windows' else '-c'
 
     # Building the command for Windows, Linux and Darwin. Ex: "ping -C 1 192.168.x.y"
     if param == '-n':
